@@ -6,8 +6,13 @@
 <br>
 <br>
 
+# Installation
+There is currently no easy way to install pypkg. -- you have to add it manually to your PATH environment variable, which I am not gonna bother with yet.
 ## Available commands:
     pypkg install scope/name - Creates a "Packages" folder if it doesn't already exist and installs the package onto it.
+    
+    Example:
+    pypkg install roblox/roact
 
 ## Will not do:
     wally publish / pypkg publish
@@ -15,11 +20,11 @@
     wally logout / pypkg logout
     wally package
 
-    for obvious reasons. I would rather not mess with their mess of an API, nor are those endpoints documented
+    for obvious reasons. I would rather not mess with their mess of an API, nor are 
 
 <html>
 <center><h5><i><l>will probably not do:</l></i></h5></center>
-</html>
-    Manifest parsing - dear lord i hate the toml format
-    Lockfiles
 
+<center><code>Manifest parsing - dear lord i hate the toml format</code></center>
+<center><code>Lockfiles</code></center>
+</html>

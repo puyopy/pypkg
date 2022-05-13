@@ -15,7 +15,7 @@
     wally logout / pypkg logout
     wally package
 
-    for obvious reasons. I would rather not mess with their mess of an API, nor are 
+    for obvious reasons. I would rather not mess with their mess of an API, nor are those endpoints documented
 
 <html>
 <center><h5><i><l>will probably not do:</l></i></h5></center>

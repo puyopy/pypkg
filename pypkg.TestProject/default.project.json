@@ -1,23 +1,20 @@
 {
-  "name": "pupy.TestProject",
+  "name": "TestProject",
   "tree": {
     "$className": "DataModel",
-
     "ReplicatedStorage": {
       "Common": {
         "$path": "src/shared"
       },
-	  "Packages": {
-		"$path": "Packages"
-	  }
+      "Packages": {
+        "$path": "Packages"
+      }
     },
-
     "ServerScriptService": {
       "Server": {
         "$path": "src/server"
       }
     },
-
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "Client": {
@@ -25,7 +22,6 @@
         }
       }
     },
-
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true

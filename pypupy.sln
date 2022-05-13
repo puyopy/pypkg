@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pypkg", "pypkg\pypkg.csproj", "{9AC02543-A4FB-46AE-963B-A86A64F87D0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AC02543-A4FB-46AE-963B-A86A64F87D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC02543-A4FB-46AE-963B-A86A64F87D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC02543-A4FB-46AE-963B-A86A64F87D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC02543-A4FB-46AE-963B-A86A64F87D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {196DBAE3-5412-4BC2-87B4-9CF349805BB3}
+	EndGlobalSection
+EndGlobal

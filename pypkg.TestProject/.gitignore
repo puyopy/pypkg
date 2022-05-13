@@ -1,0 +1,9 @@
+# Project place file
+/pupy.TestProject.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+# Wally packages
+Packages

@@ -1,6 +1,8 @@
 ﻿// pypupy - 2022
 
 using Newtonsoft.Json;
+
+using pypkg.Parsing;
 using pypkg.API;
 using pypkg.Commands;
 using System.IO.Compression;
@@ -110,12 +112,12 @@ namespace pypkg.Install
                         string DepenInfo = dependency.Value;
 
                         string JoinedVer = string.Join("*", DepenInfo);
-                        string[] Splits = JoinedVer.Split("/");
+                        ScopeName ParsedDependency = PackageParser.Parse(DepenInfo);
 
                         string DepenFolderName = dependency.Key;
 
-                        string DependencyScope = Splits[0];
-                        string DependencyName = Splits[1];
+                        string DependencyScope = ParsedDependency.Scope;
+                        string DependencyName = ParsedDependency.Name;
 
                         int NameIndex = DependencyName.LastIndexOf("@");
                         if (NameIndex >= 0)

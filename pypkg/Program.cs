@@ -1,18 +1,29 @@
 ﻿// pypupy - 2022
 
-using System.Reflection;
 using pypkg.Commands;
+using System.Reflection;
 
 namespace pypkg
 {
     public class Manager
     {
-        private static readonly InstallCommand Install = new InstallCommand();
+        private static readonly InstallCommand InstallCommand = new InstallCommand();
+        private static readonly UninstallCommand UninstallCommand = new UninstallCommand();
+
         // TODO: Remove DateTime once we're out of dev
         public static string pypkgVersion = "pypkg-" + DateTime.Now + "-dev";
         // The wally version we "mask" ourselves behind
         public static string WallyVersion = "1.0.0";
         public static readonly HttpClient HttpClient = new HttpClient();
+
+        public static string Help = @"
+              pypkg - a simple wally client
+            
+                Usage:
+                
+                pypkg install <scope>/<name> - Installs a package from the Wally registry
+                pypkg uninstall <scope>/<name> - Attempts to uninstall a wally client.
+        ";
 
         public static string AssemblyDirectory
         {
@@ -32,9 +43,9 @@ namespace pypkg
                       .Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal))
                       .ToArray();
         }
-        
+
         // required to make main async:
-        public static void Main(string [] args)
+        public static void Main(string[] args)
         {
             // The API requires every client to provide a wally-version... for some reason..?
             // Hope I don't get caught and be demolished to death
@@ -56,7 +67,13 @@ namespace pypkg
             switch (CommandName)
             {
                 case "install":
-                    await Install.Execute(CommandArgs);
+                    await InstallCommand.Execute(CommandArgs);
+                    break;
+                case "uninstall":
+                    await UninstallCommand.Execute(CommandArgs);
+                    break;
+                default:
+                    Logger.Log(Help);
                     break;
             }
         }

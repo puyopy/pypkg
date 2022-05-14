@@ -9,6 +9,7 @@ namespace pypkg
     {
         private static readonly InstallCommand InstallCommand = new InstallCommand();
         private static readonly UninstallCommand UninstallCommand = new UninstallCommand();
+        private static readonly QueryCommand QueryCommand = new QueryCommand();
 
         // TODO: Remove DateTime once we're out of dev
         public static string pypkgVersion = "pypkg-" + DateTime.Now + "-dev";
@@ -23,6 +24,7 @@ namespace pypkg
                 
                 pypkg install <scope>/<name> - Installs a package from the Wally registry
                 pypkg uninstall <scope>/<name> - Attempts to uninstall a wally client.
+                pypkg search/query <query> - Searches the wally registry for packages
         ";
 
         public static string AssemblyDirectory
@@ -54,7 +56,8 @@ namespace pypkg
 
             // Incase they do decide to demolish me
 
-            HttpClient.DefaultRequestHeaders.Add("pypkg-abuse", "contact@shiroko.me");
+            HttpClient.DefaultRequestHeaders.Add("pypkg-github", "https://github.com/puyopy/pypkg");
+            HttpClient.DefaultRequestHeaders.Add("pypkg-contact", "contact@shiroko.me");
             AsyncMain(args).GetAwaiter().GetResult();
         }
 
@@ -71,6 +74,12 @@ namespace pypkg
                     break;
                 case "uninstall":
                     await UninstallCommand.Execute(CommandArgs);
+                    break;
+                case "search":
+                    await QueryCommand.Execute(CommandArgs);
+                    break;
+                case "query":
+                    await QueryCommand.Execute(CommandArgs);
                     break;
                 default:
                     Logger.Log(Help);

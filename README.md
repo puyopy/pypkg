@@ -13,6 +13,12 @@ There is currently no easy way to install pypkg. -- you have to add it manually 
     
     Example:
     pypkg install roblox/roact
+	
+	pypkg uninstall scope/name or pypkg uninstall name - Attempts to uninstall the specified package.
+	
+	Examples:
+	pypkg uninstall roblox/roact
+	pypkg uninstall fusion
 
 ## Will not do:
     wally publish / pypkg publish

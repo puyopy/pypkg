@@ -1,6 +1,10 @@
+# visual studio garbage
+.vs
+
 # build files
 
 pypkg/bin
 pypkg/obj
 
 pypkg.TestProject/Packages
+

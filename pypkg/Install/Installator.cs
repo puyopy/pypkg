@@ -12,7 +12,7 @@ namespace pypkg.Install
     public class Installator
     {
         private static readonly string ExecutionDirectory = Directory.GetCurrentDirectory();
-        private static readonly string PackagesDirectory = ExecutionDirectory + "/Packages/";
+        public static readonly string PackagesDirectory = ExecutionDirectory + "/Packages/";
         public static readonly HttpClient HttpClient = Manager.HttpClient;
         private static readonly string TempDirectory = Path.GetTempPath() + "/pypkg/";
 

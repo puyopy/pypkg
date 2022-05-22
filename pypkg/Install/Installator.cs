@@ -1,5 +1,6 @@
 ﻿// pypupy - 2022
 
+using System.Threading;
 using Newtonsoft.Json;
 
 using pypkg.Parsing;
@@ -100,6 +101,55 @@ namespace pypkg.Install
                 try
                 {
                     ZipFile.ExtractToDirectory(path, PackageDirectory);
+                    int RetryLimit = 3;
+                    int Retried = 0;
+
+                    if (FolderName != null)
+                    {
+                        Logger.Log("Trying to override name in default.project.json");
+                        string ProjectFilePath = PackageDirectory + "/default.project.json";
+
+                        while (!File.Exists(ProjectFilePath) && Retried < RetryLimit)
+                        {
+                            await Task.Delay(1000);
+                            Retried += 1;
+                        }
+                    
+                        if (File.Exists(ProjectFilePath))
+                        {
+                            Logger.Log("Overriding name in default.project.json");
+                            string[] lines = File.ReadAllLines(ProjectFilePath);
+                            int counter = 0;
+
+                            foreach (string line in lines)
+                            {
+                                if (counter == 1)
+                                {
+                                    lines[counter] = $"\t \u0022name\u0022: \u0022{FolderName}\u0022";
+                                    break;
+                                }
+                                else
+                                {
+                                    counter += 1;
+                                }
+                            }
+
+                            try
+                            {
+                                File.WriteAllLines(ProjectFilePath,lines);
+                            }
+                            catch (Exception err)
+                            {
+                                Logger.Log($"Hit a failure point while writing to default.project.json. File may be corrupted. \n {err}");
+                                return CommandStatus.Failure;
+                            }
+                        } else
+                        {
+                            Logger.Log($"default.projet.json is missing from package {PackageName} {ProjectFilePath} ",Logger.InfoType.Warn);
+                        }
+                    }
+                    
+                    
                 }
                 catch (Exception err)
                 {

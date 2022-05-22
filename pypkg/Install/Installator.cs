@@ -125,7 +125,7 @@ namespace pypkg.Install
                             {
                                 if (counter == 1)
                                 {
-                                    lines[counter] = $"\t \u0022name\u0022: \u0022{FolderName}\u0022";
+                                    lines[counter] = $"\u0022name\u0022: \u0022{FolderName}\u0022";
                                     break;
                                 }
                                 else

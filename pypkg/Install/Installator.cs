@@ -79,6 +79,12 @@ namespace pypkg.Install
             {
                 // Might cause a ton of issues. its microsoft-software after all.
                 //CreateTemp(Scope);
+                if (!Directory.Exists(TempDirectory))
+                {
+                    Logger.Log("Temp directory didnt exist. Creating...");
+                    Directory.CreateDirectory(TempDirectory);
+                }
+
                 string path = TempDirectory + PackageName + "@" + Package.version + ".zip.temp";
                 await File.WriteAllBytesAsync(path, ZipContent);
                 string PackageDirectory = PackagesDirectory + FolderName;
